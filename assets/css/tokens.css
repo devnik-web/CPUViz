@@ -1,0 +1,82 @@
+/* tokens.css — design tokens (light/dark) */
+
+:root {
+  /* Surfaces */
+  --surface-0:    #080c18;
+  --surface-1:    #0e1525;
+  --surface-2:    #141d30;
+  --surface-3:    #1b2540;
+
+  /* Borders */
+  --border-subtle:  #1e2d4a;
+  --border-default: #2a3d60;
+  --border-strong:  #3d5a8a;
+
+  /* Text */
+  --text-high:  #dde6f5;
+  --text-mid:   #7e94b8;
+  --text-low:   #3d506e;
+
+  /* Brand */
+  --blue:        #4f9eff;
+  --blue-dim:    rgba(79, 158, 255, 0.18);
+  --blue-glow:   rgba(79, 158, 255, 0.28);
+  --teal:        #00ddb5;
+  --red:         #ff5f5f;
+  --amber:       #f5a623;
+  --purple:      #a78bfa;
+  --pink:        #f472b6;
+  --green:       #34d399;
+  --orange:      #fb923c;
+
+  /* Gantt process palette */
+  --p0:  #4f9eff; --p1:  #00ddb5; --p2:  #ff5f5f; --p3:  #f5a623;
+  --p4:  #a78bfa; --p5:  #f472b6; --p6:  #34d399; --p7:  #fb923c;
+  --p8:  #60a5fa; --p9:  #e879f9; --p10: #2dd4bf; --p11: #fbbf24;
+
+  /* Radii */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+
+  /* Typography */
+  --font-ui:   'DM Sans', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Fira Code', monospace;
+
+  /* Transitions */
+  --ease: 0.18s ease;
+  --ease-out: 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Gantt */
+  --gantt-row-h: 52px;
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --surface-0:    #f4f7ff;
+  --surface-1:    #ffffff;
+  --surface-2:    #ffffff;
+  --surface-3:    #eef2fd;
+
+  --border-subtle:  #e0e8f7;
+  --border-default: #c8d5ee;
+  --border-strong:  #93a9d0;
+
+  --text-high:  #111827;
+  --text-mid:   #4a5780;
+  --text-low:   #9aa5c0;
+
+  --blue:       #2563eb;
+  --blue-dim:   rgba(37, 99, 235, 0.1);
+  --blue-glow:  rgba(37, 99, 235, 0.2);
+  --teal:       #059669;
+  --red:        #dc2626;
+  --amber:      #d97706;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar              { width: 5px; height: 5px; }
+::-webkit-scrollbar-track        { background: var(--surface-1); }
+::-webkit-scrollbar-thumb        { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover  { background: var(--text-low); }

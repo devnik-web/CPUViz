@@ -1,0 +1,215 @@
+/* gantt.css — Gantt chart, playback controls, legend */
+
+/* ── Wrapper card ────────────────────────────────────────── */
+
+.gantt-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.gantt-heading {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.gantt-heading-accent {
+  display: block;
+  width: 2px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Playback controls ───────────────────────────────────── */
+
+.playback {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.playback-info {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-mid);
+  padding: 4px 9px;
+  background: var(--surface-3);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-sm);
+}
+
+.progress-track {
+  width: 100%;
+  height: 3px;
+  background: var(--surface-3);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-thumb {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--blue), var(--teal));
+  transition: width 0.28s ease;
+}
+
+/* ── Chart area ──────────────────────────────────────────── */
+
+.gantt-scroll {
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.gantt-row {
+  display: flex;
+  align-items: stretch;
+  min-height: var(--gantt-row-h);
+  min-width: max-content;
+  margin-bottom: 4px;
+}
+
+.gantt-tick-row {
+  display: flex;
+  min-width: max-content;
+}
+
+/* ── Blocks ──────────────────────────────────────────────── */
+
+.g-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: var(--gantt-row-h);
+  border-radius: 6px;
+  margin: 0 1px;
+  font-weight: 600;
+  color: #fff;
+  position: relative;
+  cursor: default;
+  transform-origin: center bottom;
+  transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+.g-block:hover {
+  transform: scaleY(1.06);
+  filter: brightness(1.14);
+  z-index: 2;
+}
+
+.g-block-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.g-block-dur {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+/* Idle block */
+.g-block--idle {
+  background: var(--surface-3);
+  border: 1px dashed var(--border-default);
+  color: var(--text-low);
+}
+
+/* Tooltip */
+.g-block::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  padding: 4px 8px;
+  border-radius: var(--r-sm);
+  background: var(--surface-1);
+  border: 1px solid var(--border-strong);
+  color: var(--text-high);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s ease;
+  z-index: 10;
+}
+
+.g-block:hover::after {
+  opacity: 1;
+}
+
+/* Process colour fills */
+.g-block--p0  { background: linear-gradient(150deg, #4f9eff, #2176d2); }
+.g-block--p1  { background: linear-gradient(150deg, #00ddb5, #009e82); }
+.g-block--p2  { background: linear-gradient(150deg, #ff5f5f, #c0392b); }
+.g-block--p3  { background: linear-gradient(150deg, #f5a623, #b7791f); }
+.g-block--p4  { background: linear-gradient(150deg, #a78bfa, #7c3aed); }
+.g-block--p5  { background: linear-gradient(150deg, #f472b6, #be185d); }
+.g-block--p6  { background: linear-gradient(150deg, #34d399, #059669); }
+.g-block--p7  { background: linear-gradient(150deg, #fb923c, #c2410c); }
+.g-block--p8  { background: linear-gradient(150deg, #60a5fa, #1d4ed8); }
+.g-block--p9  { background: linear-gradient(150deg, #e879f9, #7e22ce); }
+.g-block--p10 { background: linear-gradient(150deg, #2dd4bf, #0f766e); }
+.g-block--p11 { background: linear-gradient(150deg, #fbbf24, #92400e); }
+
+/* ── Timeline ticks ──────────────────────────────────────── */
+
+.g-tick {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--text-low);
+  text-align: center;
+  position: relative;
+}
+
+.g-tick::before {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 5px;
+  background: var(--border-default);
+  margin: 0 auto 2px;
+}
+
+/* ── Legend ──────────────────────────────────────────────── */
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.7rem;
+  color: var(--text-mid);
+}
+
+.legend-swatch {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
