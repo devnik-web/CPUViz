@@ -1,18 +1,14 @@
-/**
- * app.js — entry point
- * Owns state, wires all UI events, calls algorithms + renderer.
- */
+
 
 'use strict';
 
-// ── App state ─────────────────────────────────────────────
-
-let processData = [];  // current validated process list
-let allResults  = {};  // { algoKey: { schedule, procs, avgWT, avgTAT } }
-let stepStates  = {};  // { algoKey: { step, interval } }
 
 
-// ── Theme ─────────────────────────────────────────────────
+let processData = [];  
+let allResults  = {};  
+let stepStates  = {};  
+
+
 
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon   = document.getElementById('themeIcon');
@@ -29,11 +25,11 @@ themeToggle.addEventListener('click', () => {
 });
 
 
-// ── Algorithm selection ───────────────────────────────────
+
 
 const algoList = document.getElementById('algoList');
 
-// Click or keyboard toggle on each algo item
+
 algoList.addEventListener('click', e => {
   const item = e.target.closest('.algo-item');
   if (!item) return;
@@ -96,7 +92,7 @@ function syncControls() {
 }
 
 
-// ── Process rows ──────────────────────────────────────────
+// ── Process rows
 
 document.getElementById('generateBtn').addEventListener('click', generateRows);
 
@@ -150,7 +146,7 @@ function readProcessData() {
 }
 
 
-// ── Run ───────────────────────────────────────────────────
+// ── Run 
 
 document.getElementById('runBtn').addEventListener('click', () => {
   clearValidation();
@@ -201,7 +197,7 @@ document.getElementById('runBtn').addEventListener('click', () => {
 });
 
 
-// ── Reset / Clear ─────────────────────────────────────────
+// ── Reset / Clear 
 
 document.getElementById('resetBtn').addEventListener('click', () => {
   generateRows();
@@ -220,7 +216,7 @@ function showResults(visible) {
 }
 
 
-// ── Validation helpers ────────────────────────────────────
+// ── Validation helpers
 
 function showError(msg) {
   const el = document.getElementById('validationMsg');
