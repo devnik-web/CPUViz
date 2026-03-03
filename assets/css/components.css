@@ -1,6 +1,4 @@
-/* components.css — UI components */
 
-/* ── Panel ───────────────────────────────────────────────── */
 
 .panel {
   background: var(--surface-2);
@@ -31,7 +29,7 @@
   flex-shrink: 0;
 }
 
-/* ── Algorithm list ──────────────────────────────────────── */
+/* ── Algorithm list*/
 
 .algo-toolbar {
   display: flex;
@@ -222,7 +220,7 @@
   font-size: 0.8rem;
 }
 
-/* ── Buttons ─────────────────────────────────────────────── */
+/* ── Buttons */
 
 .btn {
   display: inline-flex;
