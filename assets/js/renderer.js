@@ -1,13 +1,8 @@
-/**
- * renderer.js
- * Builds and updates every piece of DOM in the output panel:
- * tabs, Gantt charts, results tables, comparison view.
- */
+
 
 'use strict';
 
-// ── Colour palettes ───────────────────────────────────────
-// CSS class suffix maps to .g-block--pN in gantt.css
+
 const PROCESS_COLORS_CSS = ['p0','p1','p2','p3','p4','p5','p6','p7','p8','p9','p10','p11'];
 const PROCESS_COLORS_HEX = [
   '#4f9eff','#00ddb5','#ff5f5f','#f5a623',
@@ -34,7 +29,7 @@ const ALGO_COLORS = {
 };
 
 
-// ── Tab system ────────────────────────────────────────────
+
 
 function buildTabs(algos, allResults, stepStates) {
   const nav    = document.getElementById('tabsNav');
@@ -111,7 +106,7 @@ function switchTab(key) {
 }
 
 
-// ── Algorithm panel HTML ──────────────────────────────────
+// ── Algorithm panel HTML 
 
 function buildAlgoPanel(algo, result) {
   const { procs, schedule, avgWT, avgTAT } = result;
@@ -192,7 +187,7 @@ function buildAlgoPanel(algo, result) {
 }
 
 
-// ── Comparison panel HTML ─────────────────────────────────
+// ── Comparison panel HTML
 
 function buildComparePanel(algos, allResults) {
   const wts   = algos.map(a => allResults[a].avgWT);
@@ -264,8 +259,7 @@ function buildComparePanel(algos, allResults) {
 }
 
 
-// ── Gantt rendering ───────────────────────────────────────
-
+// ── Gantt rendering 
 function renderGantt(algo, result, upTo) {
   const chartEl    = document.getElementById(`gchart-${algo}`);
   const timelineEl = document.getElementById(`gtimeline-${algo}`);
@@ -334,7 +328,7 @@ function renderGantt(algo, result, upTo) {
 }
 
 
-// ── Panel wiring (step controls + export) ────────────────
+// ── Panel wiring (step controls + export)─
 
 function wirePanel(algo, allResults, stepStates) {
   const panel = document.getElementById(`panel-${algo}`);
@@ -393,8 +387,7 @@ function wirePanel(algo, allResults, stepStates) {
 }
 
 
-// ── Export ────────────────────────────────────────────────
-
+// ── Export
 function exportJSON(algo, allResults) {
   const r   = allResults[algo];
   const out = r.procs.map(p => ({
